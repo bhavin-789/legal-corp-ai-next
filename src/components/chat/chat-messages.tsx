@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Bot, User, Copy, CheckCircle, BookOpen, Download } from "lucide-react";
+import { useIntl } from "react-intl";
 
 interface ChatMessage {
   id: string;
@@ -32,6 +33,7 @@ export function ChatMessages({
 }: ChatMessagesProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [copiedMessageId, setCopiedMessageId] = useState<string | null>(null);
+  const intl = useIntl();
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -140,7 +142,9 @@ export function ChatMessages({
   return (
     <Card className="h-full flex flex-col rounded-none">
       <CardHeader className="pb-3">
-        <CardTitle className="text-lg">Conversación</CardTitle>
+        <CardTitle className="text-lg">
+        {intl.formatMessage({ id: "chat.conversationBox.conversation" })}
+        </CardTitle>
       </CardHeader>
       
       <CardContent className="flex-1 p-0">
@@ -149,8 +153,13 @@ export function ChatMessages({
             {messages.length === 0 ? (
               <div className="text-center py-12 text-muted-foreground">
                 <Bot className="h-16 w-16 mx-auto mb-4 opacity-50" />
-                <h3 className="text-lg font-medium mb-2">Comienza una conversación</h3>
-                <p>Envía un mensaje para comenzar a chatear con el asistente legal</p>
+                <h3 className="text-lg font-medium mb-2">
+        {intl.formatMessage({ id: "chat.conversationBox.startaConversation" })}
+
+                </h3>
+                <p>
+                {intl.formatMessage({ id: "chat.conversationBox.sendAMessageToStart" })}
+                </p>
               </div>
             ) : (
               messages.map((message) => (

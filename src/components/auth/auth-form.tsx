@@ -4,10 +4,17 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { FileText, Eye, EyeOff, AlertCircle, CheckCircle } from "lucide-react";
 import Link from "next/link";
+import { useIntl } from "react-intl";
 
 interface AuthFormProps {
   type: "login" | "signup" | "forgot";
@@ -30,7 +37,12 @@ interface ValidationErrors {
   name?: string;
 }
 
-export function AuthForm({ type, onSubmit, isLoading = false, error }: AuthFormProps) {
+export function AuthForm({
+  type,
+  onSubmit,
+  isLoading = false,
+  error,
+}: AuthFormProps) {
   const [formData, setFormData] = useState<FormData>({
     email: "",
     password: "",
@@ -39,78 +51,87 @@ export function AuthForm({ type, onSubmit, isLoading = false, error }: AuthFormP
   });
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [validationErrors, setValidationErrors] = useState<ValidationErrors>({});
-  const [touched, setTouched] = useState<{[key: string]: boolean}>({});
+  const [validationErrors, setValidationErrors] = useState<ValidationErrors>(
+    {}
+  );
+  const [touched, setTouched] = useState<{ [key: string]: boolean }>({});
+  const intl = useIntl();
 
   // Validate form in real-time
   useEffect(() => {
     const errors: ValidationErrors = {};
-    
+
     // Email validation
     if (touched.email && formData.email) {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(formData.email)) {
-        errors.email = "Formato de correo inválido";
+        errors.email = `${intl.formatMessage({ id: "authForm.email.invalidEmailFormatError" })}`;
       }
     }
-    
+
     // Password validation
     if (touched.password && formData.password) {
       if (formData.password.length < 8) {
-        errors.password = "La contraseña debe tener al menos 8 caracteres";
+        errors.password = `${intl.formatMessage({ id: "authForm.password.pwdMustbe8LongError" })}`;
       } else if (!/[A-Z]/.test(formData.password)) {
-        errors.password = "Debe contener al menos una mayúscula";
+        errors.password = `${intl.formatMessage({ id: "authForm.password.atLeast1UpperCaseLaterError" })}`;
       } else if (!/[a-z]/.test(formData.password)) {
-        errors.password = "Debe contener al menos una minúscula";
+        errors.password = `${intl.formatMessage({ id: "authForm.password.atLeast1LowerCaseLaterError" })}`;
       } else if (!/\d/.test(formData.password)) {
-        errors.password = "Debe contener al menos un número";
+        errors.password = `${intl.formatMessage({ id: "authForm.password.atLeast1NumberError" })}`;
       }
     }
-    
+
     // Confirm password validation
-    if (touched.confirmPassword && formData.confirmPassword && formData.password) {
+    if (
+      touched.confirmPassword &&
+      formData.confirmPassword &&
+      formData.password
+    ) {
       if (formData.confirmPassword !== formData.password) {
-        errors.confirmPassword = "Las contraseñas no coinciden";
+        errors.confirmPassword = `${intl.formatMessage({ id: "authForm.confirmPassword.passowrdDoNotMatchError" })}`;
       }
     }
-    
+
     // Name validation
     if (touched.name && formData.name) {
       if (formData.name.trim().length < 2) {
-        errors.name = "El nombre debe tener al menos 2 caracteres";
+        errors.name = `${intl.formatMessage({ id: "authForm.fullName.name2CHarLongError" })}`;
       }
     }
-    
+
     setValidationErrors(errors);
   }, [formData, touched]);
 
   const handleBlur = (field: string) => {
-    setTouched(prev => ({ ...prev, [field]: true }));
+    setTouched((prev) => ({ ...prev, [field]: true }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Mark all fields as touched
     const allTouched = Object.keys(formData).reduce((acc, key) => {
       acc[key] = true;
       return acc;
-    }, {} as {[key: string]: boolean});
+    }, {} as { [key: string]: boolean });
     setTouched(allTouched);
-    
+
     // Check if there are validation errors
-    const hasErrors = Object.values(validationErrors).some(error => error !== undefined);
+    const hasErrors = Object.values(validationErrors).some(
+      (error) => error !== undefined
+    );
     if (hasErrors) {
       return;
     }
-    
+
     onSubmit(formData);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   };
 
@@ -119,34 +140,44 @@ export function AuthForm({ type, onSubmit, isLoading = false, error }: AuthFormP
   };
 
   const isFieldValid = (field: keyof ValidationErrors) => {
-    return touched[field] && formData[field as keyof FormData] && !validationErrors[field];
+    return (
+      touched[field] &&
+      formData[field as keyof FormData] &&
+      !validationErrors[field]
+    );
   };
 
   const getTitle = () => {
     switch (type) {
-      case "login": return "Iniciar Sesión";
-      case "signup": return "Crear Cuenta";
-      case "forgot": return "Recuperar Contraseña";
+      case "login":
+        return "Iniciar Sesión";
+      case "signup":
+        return "Crear Cuenta";
+      case "forgot":
+        return "Recuperar Contraseña";
     }
   };
 
   const getDescription = () => {
     switch (type) {
-      case "login": return "Ingresa tus credenciales para acceder a tu cuenta";
-      case "signup": return "Crea tu cuenta para comenzar a usar Legal Corp AI";
-      case "forgot": return "Te enviaremos un enlace para recuperar tu contraseña";
+      case "login":
+        return "Ingresa tus credenciales para acceder a tu cuenta";
+      case "signup":
+        return "Crea tu cuenta para comenzar a usar Legal Corp AI";
+      case "forgot":
+        return "Te enviaremos un enlace para recuperar tu contraseña";
     }
   };
 
   const getPasswordRequirements = () => {
     return (
       <div className="text-xs text-muted-foreground space-y-1">
-        <p>La contraseña debe contener:</p>
+        <p>{intl.formatMessage({ id: "authForm.password.passwordMustContainWarn" })}:</p>
         <ul className="list-disc list-inside space-y-1 ml-2">
-          <li>Mínimo 8 caracteres</li>
-          <li>Al menos una mayúscula</li>
-          <li>Al menos una minúscula</li>
-          <li>Al menos un número</li>
+          <li>{intl.formatMessage({ id: "authForm.password.min8CharWarn" })}</li>
+          <li>{intl.formatMessage({ id: "authForm.password.atLeast1UpperCaseLaterWarn" })}</li>
+          <li>{intl.formatMessage({ id: "authForm.password.atLeast1LowerCaseLaterWarn" })}</li>
+          <li>{intl.formatMessage({ id: "authForm.password.atLeast1NumberWarn" })}</li>
         </ul>
       </div>
     );
@@ -163,7 +194,7 @@ export function AuthForm({ type, onSubmit, isLoading = false, error }: AuthFormP
         <CardTitle className="text-2xl">{getTitle()}</CardTitle>
         <CardDescription>{getDescription()}</CardDescription>
       </CardHeader>
-      
+
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
           {error && (
@@ -175,18 +206,30 @@ export function AuthForm({ type, onSubmit, isLoading = false, error }: AuthFormP
 
           {type === "signup" && (
             <div className="space-y-2">
-              <Label htmlFor="name">Nombre Completo</Label>
+              <Label htmlFor="name">
+                {intl.formatMessage({
+                  id: "authForm.fullName.title",
+                })}
+              </Label>
               <div className="relative">
                 <Input
                   id="name"
                   name="name"
                   type="text"
-                  placeholder="Juan Pérez"
+                  placeholder={intl.formatMessage({
+                    id: "authForm.fullName.placeholder",
+                  })}
                   value={formData.name}
                   onChange={handleChange}
                   onBlur={() => handleBlur("name")}
                   required
-                  className={getFieldError("name") ? "border-red-500" : isFieldValid("name") ? "border-green-500" : ""}
+                  className={
+                    getFieldError("name")
+                      ? "border-red-500"
+                      : isFieldValid("name")
+                      ? "border-green-500"
+                      : ""
+                  }
                 />
                 {isFieldValid("name") && (
                   <CheckCircle className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-green-500" />
@@ -199,18 +242,28 @@ export function AuthForm({ type, onSubmit, isLoading = false, error }: AuthFormP
           )}
 
           <div className="space-y-2">
-            <Label htmlFor="email">Correo Electrónico</Label>
+            <Label htmlFor="email">
+              {intl.formatMessage({ id: "authForm.email.label" })}
+            </Label>
             <div className="relative">
               <Input
                 id="email"
                 name="email"
                 type="email"
-                placeholder="correo@ejemplo.com"
+                placeholder={intl.formatMessage({
+                  id: "authForm.email.placeholder",
+                })}
                 value={formData.email}
                 onChange={handleChange}
                 onBlur={() => handleBlur("email")}
                 required
-                className={getFieldError("email") ? "border-red-500" : isFieldValid("email") ? "border-green-500" : ""}
+                className={
+                  getFieldError("email")
+                    ? "border-red-500"
+                    : isFieldValid("email")
+                    ? "border-green-500"
+                    : ""
+                }
               />
               {isFieldValid("email") && (
                 <CheckCircle className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-green-500" />
@@ -224,7 +277,9 @@ export function AuthForm({ type, onSubmit, isLoading = false, error }: AuthFormP
           {type !== "forgot" && (
             <>
               <div className="space-y-2">
-                <Label htmlFor="password">Contraseña</Label>
+                <Label htmlFor="password">
+                  {intl.formatMessage({ id: "authForm.password.label" })}
+                </Label>
                 <div className="relative">
                   <Input
                     id="password"
@@ -235,7 +290,13 @@ export function AuthForm({ type, onSubmit, isLoading = false, error }: AuthFormP
                     onChange={handleChange}
                     onBlur={() => handleBlur("password")}
                     required
-                    className={getFieldError("password") ? "border-red-500" : isFieldValid("password") ? "border-green-500" : "pr-10"}
+                    className={
+                      getFieldError("password")
+                        ? "border-red-500"
+                        : isFieldValid("password")
+                        ? "border-green-500"
+                        : "pr-10"
+                    }
                   />
                   <Button
                     type="button"
@@ -252,18 +313,24 @@ export function AuthForm({ type, onSubmit, isLoading = false, error }: AuthFormP
                   </Button>
                 </div>
                 {getFieldError("password") && (
-                  <p className="text-xs text-red-500">{getFieldError("password")}</p>
+                  <p className="text-xs text-red-500">
+                    {getFieldError("password")}
+                  </p>
                 )}
-                {type === "signup" && touched.password && !getFieldError("password") && (
-                  <div className="mt-2">
-                    {getPasswordRequirements()}
-                  </div>
-                )}
+                {type === "signup" &&
+                  touched.password &&
+                  !getFieldError("password") && (
+                    <div className="mt-2">{getPasswordRequirements()}</div>
+                  )}
               </div>
 
               {type === "signup" && (
                 <div className="space-y-2">
-                  <Label htmlFor="confirmPassword">Confirmar Contraseña</Label>
+                  <Label htmlFor="confirmPassword">
+                    {intl.formatMessage({
+                      id: "authForm.confirmPassword.label",
+                    })}
+                  </Label>
                   <div className="relative">
                     <Input
                       id="confirmPassword"
@@ -274,14 +341,22 @@ export function AuthForm({ type, onSubmit, isLoading = false, error }: AuthFormP
                       onChange={handleChange}
                       onBlur={() => handleBlur("confirmPassword")}
                       required
-                      className={getFieldError("confirmPassword") ? "border-red-500" : isFieldValid("confirmPassword") ? "border-green-500" : "pr-10"}
+                      className={
+                        getFieldError("confirmPassword")
+                          ? "border-red-500"
+                          : isFieldValid("confirmPassword")
+                          ? "border-green-500"
+                          : "pr-10"
+                      }
                     />
                     <Button
                       type="button"
                       variant="ghost"
                       size="sm"
                       className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
-                      onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                      onClick={() =>
+                        setShowConfirmPassword(!showConfirmPassword)
+                      }
                     >
                       {showConfirmPassword ? (
                         <EyeOff className="h-4 w-4" />
@@ -291,17 +366,24 @@ export function AuthForm({ type, onSubmit, isLoading = false, error }: AuthFormP
                     </Button>
                   </div>
                   {getFieldError("confirmPassword") && (
-                    <p className="text-xs text-red-500">{getFieldError("confirmPassword")}</p>
+                    <p className="text-xs text-red-500">
+                      {getFieldError("confirmPassword")}
+                    </p>
                   )}
                 </div>
               )}
             </>
           )}
 
-          <Button 
-            type="submit" 
-            className="w-full" 
-            disabled={isLoading || Object.values(validationErrors).some(error => error !== undefined)}
+          <Button
+            type="submit"
+            className="w-full"
+            disabled={
+              isLoading ||
+              Object.values(validationErrors).some(
+                (error) => error !== undefined
+              )
+            }
           >
             {isLoading ? "Procesando..." : getTitle()}
           </Button>
@@ -311,34 +393,46 @@ export function AuthForm({ type, onSubmit, isLoading = false, error }: AuthFormP
           {type === "login" && (
             <>
               <p className="text-muted-foreground">
-                ¿No tienes cuenta?{" "}
-                <Link href="/signup" className="text-primary hover:underline font-medium">
-                  Regístrate
+                {intl.formatMessage({ id: "login.footerText1.text" })}{" "}
+                <Link
+                  href="/signup"
+                  className="text-primary hover:underline font-medium"
+                >
+                  {intl.formatMessage({ id: "login.footerText1.linkName" })}
                 </Link>
               </p>
               <p className="mt-2 text-muted-foreground">
-                ¿Olvidaste tu contraseña?{" "}
-                <Link href="/forgot-password" className="text-primary hover:underline font-medium">
-                  Recupérala
+                {intl.formatMessage({ id: "login.footerText2.text" })}{" "}
+                <Link
+                  href="/forgot-password"
+                  className="text-primary hover:underline font-medium"
+                >
+                  {intl.formatMessage({ id: "login.footerText2.linkName" })}
                 </Link>
               </p>
             </>
           )}
-          
+
           {type === "signup" && (
             <p className="text-muted-foreground">
-              ¿Ya tienes cuenta?{" "}
-              <Link href="/login" className="text-primary hover:underline font-medium">
-                Inicia sesión
+              {intl.formatMessage({ id: "signup.footerText.text" })}{" "}
+              <Link
+                href="/login"
+                className="text-primary hover:underline font-medium"
+              >
+                {intl.formatMessage({ id: "signup.footerText.linkName" })}
               </Link>
             </p>
           )}
-          
+
           {type === "forgot" && (
             <p className="text-muted-foreground">
-              ¿Recordaste tu contraseña?{" "}
-              <Link href="/login" className="text-primary hover:underline font-medium">
-                Inicia sesión
+              {intl.formatMessage({ id: "forgot.footerText.text" })}{" "}
+              <Link
+                href="/login"
+                className="text-primary hover:underline font-medium"
+              >
+                {intl.formatMessage({ id: "forgot.footerText.linkName" })}
               </Link>
             </p>
           )}

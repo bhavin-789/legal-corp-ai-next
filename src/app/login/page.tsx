@@ -7,6 +7,7 @@ import { Footer } from "@/components/layout/footer";
 import { AuthForm } from "@/components/auth/auth-form";
 import { authManager } from "@/lib/auth";
 import { useToast } from "@/hooks/use-toast";
+import { DivideSquareIcon } from "lucide-react";
 
 export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -53,10 +54,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      
-      <main className="flex-1 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-muted/20">
+      <div className="flex-1 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-muted/20">
         <div className="w-full max-w-md">
           <AuthForm
             type="login"
@@ -65,9 +63,6 @@ export default function LoginPage() {
             error={error}
           />
         </div>
-      </main>
-      
-      <Footer />
-    </div>
+      </div>
   );
 }

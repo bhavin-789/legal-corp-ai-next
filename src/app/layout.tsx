@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
+import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
+import { InternationalizationProvider } from "@/context/InternationalizationContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,12 +18,21 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Legal Corp AI - Asistente Legal con IA para Bolivia",
-  description: "Accede a 20 GPTs especializados en derecho boliviano. Chatea con expertos legales y genera documentos profesionales con IA.",
-  keywords: ["Legal Corp AI", "IA legal", "derecho boliviano", "abogados", "documentos legales", "Bolivia"],
+  description:
+    "Accede a 20 GPTs especializados en derecho boliviano. Chatea con expertos legales y genera documentos profesionales con IA.",
+  keywords: [
+    "Legal Corp AI",
+    "IA legal",
+    "derecho boliviano",
+    "abogados",
+    "documentos legales",
+    "Bolivia",
+  ],
   authors: [{ name: "Legal Corp AI Team" }],
   openGraph: {
     title: "Legal Corp AI - Asistente Legal con IA para Bolivia",
-    description: "Plataforma de IA especializada en derecho boliviano con 20 GPTs expertos",
+    description:
+      "Plataforma de IA especializada en derecho boliviano con 20 GPTs expertos",
     url: "https://legalcorpai.bo",
     siteName: "Legal Corp AI",
     type: "website",
@@ -42,7 +54,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
-        {children}
+        <InternationalizationProvider>
+          <div className="min-h-screen flex flex-col">
+            <Header />
+            <main>{children}</main>
+            <Footer />
+          </div>
+        </InternationalizationProvider>
         <Toaster />
       </body>
     </html>

@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Plus, Search, MessageSquare, Clock, Trash2, Bot } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { useIntl } from "react-intl";
 
 interface ChatSession {
   id: string;
@@ -33,6 +34,7 @@ export function ChatSidebar({
   onDeleteSession
 }: ChatSidebarProps) {
   const [searchQuery, setSearchQuery] = useState("");
+  const intl = useIntl();
 
   const filteredSessions = sessions.filter(session =>
     session.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -56,7 +58,9 @@ export function ChatSidebar({
     <Card className="h-full flex flex-col border-r rounded-none">
       <CardHeader className="pb-3">
         <CardTitle className="text-lg flex items-center justify-between">
-          <span>Conversaciones</span>
+          <span>
+          {intl.formatMessage({ id: "chat.sidebar.conversations" })}
+          </span>
           <Button size="sm" onClick={onNewSession}>
             <Plus className="h-4 w-4" />
           </Button>
@@ -66,7 +70,7 @@ export function ChatSidebar({
         <div className="relative">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
-            placeholder="Buscar conversaciones..."
+            placeholder= {intl.formatMessage({ id: "chat.sidebar.searchPlaceholder" })}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="pl-10"

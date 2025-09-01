@@ -40,10 +40,7 @@ export default function ForgotPasswordPage() {
 
   if (isSuccess) {
     return (
-      <div className="min-h-screen flex flex-col">
-        <Header />
-        
-        <main className="flex-1 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-muted/20">
+        <div className="flex-1 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-muted/20">
           <div className="w-full max-w-md">
             <div className="text-center">
               <div className="flex justify-center mb-4">
@@ -66,18 +63,12 @@ export default function ForgotPasswordPage() {
               </button>
             </div>
           </div>
-        </main>
-        
-        <Footer />
-      </div>
+        </div>
     );
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      
-      <main className="flex-1 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-muted/20">
+      <div className="flex-1 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-muted/20">
         <div className="w-full max-w-md">
           <AuthForm
             type="forgot"
@@ -86,9 +77,6 @@ export default function ForgotPasswordPage() {
             error={error}
           />
         </div>
-      </main>
-      
-      <Footer />
-    </div>
+      </div>
   );
 }

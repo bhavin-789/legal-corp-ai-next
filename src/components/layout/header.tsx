@@ -6,12 +6,14 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, Globe, Shield, Users, FileText } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { useInternationalization } from "@/context/InternationalizationContext";
+import { useIntl } from "react-intl";
 
 const navigation = [
-  { name: "Inicio", href: "/" },
-  { name: "Catálogo", href: "/catalog" },
-  { name: "Precios", href: "/pricing" },
-  { name: "Mi Cuenta", href: "/account", requiresAuth: true },
+  { id: 1, name: "home", href: "/" },
+  { id: 2, name: "catalog", href: "/catalog" },
+  { id: 3, name: "prices", href: "/pricing" },
+  { id: 4, name: "myAccount", href: "/account", requiresAuth: true },
 ];
 
 const languages = [
@@ -26,12 +28,14 @@ interface NavigationProps {
 
 function Navigation({ currentLang, onLanguageChange }: NavigationProps) {
   const pathname = usePathname();
+  const intl = useIntl();
+  
 
   return (
     <nav className="flex flex-col space-y-2">
       {navigation.map((item) => (
         <Link
-          key={item.name}
+          key={item.id}
           href={item.href}
           className={`text-sm font-medium transition-colors hover:text-primary py-2 px-3 rounded-lg ${
             pathname === item.href
@@ -39,19 +43,19 @@ function Navigation({ currentLang, onLanguageChange }: NavigationProps) {
               : "text-muted-foreground hover:bg-muted/50"
           }`}
         >
-          {item.name}
+          {intl.formatMessage({ id: `header.navLinks.${item.name}` })}
         </Link>
       ))}
       
       <div className="pt-4 mt-4 border-t">
-        <h4 className="text-xs font-medium text-muted-foreground mb-2 px-3">IDIOMA</h4>
+        <h4 className="text-xs font-medium text-muted-foreground mb-2 px-3">IDIOMA</h4>123
         <div className="space-y-1">
           {languages.map((lang) => (
             <button
               key={lang.code}
               onClick={() => onLanguageChange(lang.code)}
               className={`w-full text-left text-sm transition-colors py-2 px-3 rounded-lg flex items-center space-x-2 ${
-                currentLang === lang.code
+                locale === lang.code
                   ? "text-primary bg-primary/10"
                   : "text-muted-foreground hover:bg-muted/50"
               }`}
@@ -68,28 +72,38 @@ function Navigation({ currentLang, onLanguageChange }: NavigationProps) {
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [currentLang, setCurrentLang] = useState("es");
+  const { locale, setLocale } = useInternationalization();
+  // const [currentLang, setCurrentLang] = useState(locale);
   const pathname = usePathname();
+  console.log("🚀 ~ Header ~ locale:", locale)
+  const intl = useIntl();
+
+
 
   // Load language preference from localStorage on mount
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const savedLang = localStorage.getItem('legalcorp_language');
       if (savedLang && languages.some(lang => lang.code === savedLang)) {
-        setCurrentLang(savedLang);
+        // setCurrentLang(savedLang);
+        setLocale(savedLang);
       }
     }
   }, []);
 
+  
+
   // Save language preference to localStorage when it changes
   const handleLanguageChange = (lang: string) => {
-    setCurrentLang(lang);
+    console.log("🚀 ~ handleLanguageChange ~ lang:", lang)
+    // setCurrentLang(lang);
+    setLocale(lang);
     if (typeof window !== 'undefined') {
       localStorage.setItem('legalcorp_language', lang);
     }
   };
 
-  const currentLanguage = languages.find(lang => lang.code === currentLang);
+  const currentLanguage = languages.find(lang => lang.code === locale);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -125,9 +139,9 @@ export function Header() {
         <div className="flex items-center space-x-4">
           {/* Language Switcher */}
           <div className="hidden sm:flex items-center space-x-2">
-            <Globe className="h-4 w-4 text-muted-foreground" />
+            {/* <Globe className="h-4 w-4 text-muted-foreground" /> */}
             <select
-              value={currentLang}
+              value={locale}
               onChange={(e) => handleLanguageChange(e.target.value)}
               className="bg-transparent border-none text-sm font-medium cursor-pointer appearance-none"
             >
@@ -142,10 +156,14 @@ export function Header() {
           {/* Auth Buttons */}
           <div className="hidden sm:flex items-center space-x-2">
             <Button variant="ghost" size="sm" asChild>
-              <Link href="/login">Iniciar Sesión</Link>
+              <Link href="/login">
+              {intl.formatMessage({ id: "header.login" })}
+              </Link>
             </Button>
             <Button size="sm" asChild>
-              <Link href="/signup">Registrarse</Link>
+              <Link href="/signup">
+              {intl.formatMessage({ id: "header.register" })}
+              </Link>
             </Button>
           </div>
 
@@ -173,7 +191,7 @@ export function Header() {
                 </div>
                 
                 <Navigation 
-                  currentLang={currentLang} 
+                  currentLang={locale} 
                   onLanguageChange={handleLanguageChange} 
                 />
 

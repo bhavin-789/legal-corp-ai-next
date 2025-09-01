@@ -12,6 +12,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { User, Mail, Phone, MapPin, Globe, Save, Camera } from "lucide-react";
 import { authManager } from "@/lib/auth";
 import { useToast } from "@/hooks/use-toast";
+import { useIntl } from "react-intl";
 
 interface ProfileData {
   name: string;
@@ -41,6 +42,7 @@ export function ProfileForm() {
     smsNotifications: false,
     marketingEmails: false
   });
+  const intl = useIntl();
 
   const handleInputChange = (field: keyof ProfileData, value: string | boolean) => {
     setProfileData(prev => ({
@@ -73,10 +75,12 @@ export function ProfileForm() {
         <CardHeader>
           <CardTitle className="flex items-center space-x-2">
             <User className="h-5 w-5" />
-            <span>Información Personal</span>
+            <span>
+            {intl.formatMessage({ id: "account.sidebar.profile.personalInformation.title" })}
+            </span>
           </CardTitle>
           <CardDescription>
-            Actualiza tu información personal y preferencias de cuenta
+            {intl.formatMessage({ id: "account.sidebar.profile.personalInformation.description" })}
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -111,43 +115,55 @@ export function ProfileForm() {
       {/* Basic Information */}
       <Card>
         <CardHeader>
-          <CardTitle>Información Básica</CardTitle>
+          <CardTitle>
+          {intl.formatMessage({ id: "account.sidebar.profile.basicInformation.title" })}
+          </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="name">Nombre Completo</Label>
+              <Label htmlFor="name">
+          {intl.formatMessage({ id: "account.sidebar.profile.basicInformation.fullName.label" })}
+
+              </Label>
               <Input
                 id="name"
                 value={profileData.name}
                 onChange={(e) => handleInputChange('name', e.target.value)}
-                placeholder="Juan Pérez"
+                placeholder={intl.formatMessage({ id: "account.sidebar.profile.basicInformation.fullName.placeholder" })}
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="email">Correo Electrónico</Label>
+              <Label htmlFor="email">
+          {intl.formatMessage({ id: "account.sidebar.profile.basicInformation.email.label" })}
+
+              </Label>
               <Input
                 id="email"
                 type="email"
                 value={profileData.email}
                 onChange={(e) => handleInputChange('email', e.target.value)}
-                placeholder="correo@ejemplo.com"
+                placeholder={intl.formatMessage({ id: "account.sidebar.profile.basicInformation.email.placeholder" })}
               />
             </div>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="phone">Teléfono</Label>
+              <Label htmlFor="phone">
+              {intl.formatMessage({ id: "account.sidebar.profile.basicInformation.telephone.label" })}
+              </Label>
               <Input
                 id="phone"
                 value={profileData.phone}
                 onChange={(e) => handleInputChange('phone', e.target.value)}
-                placeholder="+591 70000000"
+                placeholder={intl.formatMessage({ id: "account.sidebar.profile.basicInformation.telephone.placeholder" })}
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="language">Idioma</Label>
+              <Label htmlFor="language">
+              {intl.formatMessage({ id: "account.sidebar.profile.basicInformation.language.label" })}
+              </Label>
               <Select value={profileData.language} onValueChange={(value) => handleInputChange('language', value)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Seleccionar idioma" />
@@ -167,37 +183,46 @@ export function ProfileForm() {
         <CardHeader>
           <CardTitle className="flex items-center space-x-2">
             <MapPin className="h-5 w-5" />
-            <span>Información de Dirección</span>
+            <span>
+            {intl.formatMessage({ id: "account.sidebar.profile.addressInformation.title" })}
+            </span>
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="address">Dirección</Label>
+            <Label htmlFor="address">
+            {intl.formatMessage({ id: "account.sidebar.profile.addressInformation.address.label" })}
+
+            </Label>
             <Input
               id="address"
               value={profileData.address}
               onChange={(e) => handleInputChange('address', e.target.value)}
-              placeholder="Av. Principal #123"
+              placeholder={intl.formatMessage({ id: "account.sidebar.profile.addressInformation.address.placeholder" })}
             />
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="city">Ciudad</Label>
+              <Label htmlFor="city">
+              {intl.formatMessage({ id: "account.sidebar.profile.addressInformation.city.label" })}
+              </Label>
               <Input
                 id="city"
                 value={profileData.city}
                 onChange={(e) => handleInputChange('city', e.target.value)}
-                placeholder="La Paz"
+                placeholder={intl.formatMessage({ id: "account.sidebar.profile.addressInformation.city.placeholder" })}
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="country">País</Label>
+              <Label htmlFor="country">
+              {intl.formatMessage({ id: "account.sidebar.profile.addressInformation.country.label" })}
+              </Label>
               <Input
                 id="country"
                 value={profileData.country}
                 onChange={(e) => handleInputChange('country', e.target.value)}
-                placeholder="Bolivia"
+                placeholder={intl.formatMessage({ id: "account.sidebar.profile.addressInformation.country.placeholder" })}
               />
             </div>
           </div>
@@ -207,17 +232,22 @@ export function ProfileForm() {
       {/* Notification Preferences */}
       <Card>
         <CardHeader>
-          <CardTitle>Preferencias de Notificación</CardTitle>
+          <CardTitle>
+          {intl.formatMessage({ id: "account.sidebar.profile.notificationPreferences.title" })}
+          </CardTitle>
           <CardDescription>
-            Configura cómo quieres recibir notificaciones de nuestra plataforma
+          {intl.formatMessage({ id: "account.sidebar.profile.notificationPreferences.description" })}
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex items-center justify-between">
             <div className="space-y-0.5">
-              <Label htmlFor="email-notifications">Notificaciones por Email</Label>
+              <Label htmlFor="email-notifications">
+          {intl.formatMessage({ id: "account.sidebar.profile.notificationPreferences.emailNotification.title" })}
+
+              </Label>
               <p className="text-sm text-muted-foreground">
-                Recibe notificaciones importantes sobre tu cuenta
+          {intl.formatMessage({ id: "account.sidebar.profile.notificationPreferences.emailNotification.description" })}
               </p>
             </div>
             <Switch
@@ -229,9 +259,12 @@ export function ProfileForm() {
           
           <div className="flex items-center justify-between">
             <div className="space-y-0.5">
-              <Label htmlFor="sms-notifications">Notificaciones por SMS</Label>
+              <Label htmlFor="sms-notifications">
+              {intl.formatMessage({ id: "account.sidebar.profile.notificationPreferences.smsNotification.title" })}
+
+              </Label>
               <p className="text-sm text-muted-foreground">
-                Recibe alertas importantes por mensaje de texto
+              {intl.formatMessage({ id: "account.sidebar.profile.notificationPreferences.smsNotification.description" })}
               </p>
             </div>
             <Switch
@@ -243,9 +276,12 @@ export function ProfileForm() {
           
           <div className="flex items-center justify-between">
             <div className="space-y-0.5">
-              <Label htmlFor="marketing-emails">Emails de Marketing</Label>
+              <Label htmlFor="marketing-emails">
+              {intl.formatMessage({ id: "account.sidebar.profile.notificationPreferences.marketingEmails.title" })}
+
+              </Label>
               <p className="text-sm text-muted-foreground">
-                Recibe actualizaciones sobre nuevos features y promociones
+              {intl.formatMessage({ id: "account.sidebar.profile.notificationPreferences.marketingEmails.description" })}
               </p>
             </div>
             <Switch
@@ -265,11 +301,11 @@ export function ProfileForm() {
           className="px-8"
         >
           {isLoading ? (
-            "Guardando..."
+            `${intl.formatMessage({ id: "account.sidebar.profile.saving" })}`
           ) : (
             <>
               <Save className="h-4 w-4 mr-2" />
-              Guardar Cambios
+              {intl.formatMessage({ id: "account.sidebar.profile.saveChangesButton" })}
             </>
           )}
         </Button>

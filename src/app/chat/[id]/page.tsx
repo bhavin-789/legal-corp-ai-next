@@ -8,12 +8,21 @@ import { ChatSidebar } from "@/components/chat/chat-sidebar";
 import { ChatMessages } from "@/components/chat/chat-messages";
 import { ChatInput } from "@/components/chat/chat-input";
 import { DocumentBuilder } from "@/components/chat/document-builder";
-import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable";
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/components/ui/resizable";
 import { chatManager, ChatMessage } from "@/lib/chat";
 import { authManager } from "@/lib/auth";
 import { gpts } from "@/data/gpts";
 import { useToast } from "@/hooks/use-toast";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { BookOpen, Download } from "lucide-react";
 
@@ -22,13 +31,18 @@ export default function ChatPage() {
   const router = useRouter();
   const { toast } = useToast();
   const gptId = params.id as string;
-  
+
   const [isLoading, setIsLoading] = useState(false);
   const [sessions, setSessions] = useState(chatManager.getSessions());
-  const [activeSession, setActiveSession] = useState(chatManager.getActiveSession());
-  const [showCitations, setShowCitations] = useState<{ messageId: string; citations: string[] } | null>(null);
+  const [activeSession, setActiveSession] = useState(
+    chatManager.getActiveSession()
+  );
+  const [showCitations, setShowCitations] = useState<{
+    messageId: string;
+    citations: string[];
+  } | null>(null);
 
-  const gpt = gpts.find(g => g.id === gptId);
+  const gpt = gpts.find((g) => g.id === gptId);
   const { isAuthenticated, user } = authManager.getState();
 
   useEffect(() => {
@@ -38,11 +52,12 @@ export default function ChatPage() {
     }
 
     // Check if user can access this GPT
-    if (user?.plan === 'free' && gpt?.isPro) {
+    if (user?.plan === "free" && gpt?.isPro) {
       toast({
         title: "Acceso Restringido",
-        description: "Este GPT está disponible solo para planes Pro y Firm. Actualiza tu plan para acceder.",
-        variant: "destructive"
+        description:
+          "Este GPT está disponible solo para planes Pro y Firm. Actualiza tu plan para acceder.",
+        variant: "destructive",
       });
       router.push("/catalog");
       return;
@@ -67,8 +82,9 @@ export default function ChatPage() {
     } catch (error) {
       toast({
         title: "Error",
-        description: "No se pudo enviar el mensaje. Por favor, intenta nuevamente.",
-        variant: "destructive"
+        description:
+          "No se pudo enviar el mensaje. Por favor, intenta nuevamente.",
+        variant: "destructive",
       });
     } finally {
       setIsLoading(false);
@@ -94,17 +110,18 @@ export default function ChatPage() {
   };
 
   const handleAddToDocument = (messageId: string) => {
-    const message = activeSession?.messages.find(m => m.id === messageId);
+    const message = activeSession?.messages.find((m) => m.id === messageId);
     if (message) {
       toast({
         title: "Agregado al Documento",
-        description: "El contenido se ha agregado al constructor de documentos.",
+        description:
+          "El contenido se ha agregado al constructor de documentos.",
       });
     }
   };
 
   const handleShowCitations = (messageId: string) => {
-    const message = activeSession?.messages.find(m => m.id === messageId);
+    const message = activeSession?.messages.find((m) => m.id === messageId);
     if (message && message.citations) {
       setShowCitations({ messageId, citations: message.citations });
     }
@@ -115,7 +132,7 @@ export default function ChatPage() {
       title: "Exportando Documento",
       description: `Tu documento se está exportando en formato ${format.toUpperCase()}.`,
     });
-    
+
     // Simulate download
     setTimeout(() => {
       toast({
@@ -130,21 +147,21 @@ export default function ChatPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      
-      <main className="flex-1">
+    <>
+      <div className="flex-1">
         <ResizablePanelGroup direction="horizontal" className="h-full">
           {/* Sidebar */}
           <ResizablePanel defaultSize={25} minSize={20} maxSize={40}>
             <ChatSidebar
-              sessions={sessions.map(session => ({
+              sessions={sessions.map((session) => ({
                 id: session.id,
                 title: session.title,
                 gptName: session.gptName,
-                lastMessage: session.messages[session.messages.length - 1]?.content || "Nueva conversación",
+                lastMessage:
+                  session.messages[session.messages.length - 1]?.content ||
+                  "Nueva conversación",
                 timestamp: session.updatedAt,
-                unread: false
+                unread: false,
               }))}
               activeSessionId={activeSession?.id}
               onSessionSelect={handleSessionSelect}
@@ -152,9 +169,9 @@ export default function ChatPage() {
               onDeleteSession={handleDeleteSession}
             />
           </ResizablePanel>
-          
+
           <ResizableHandle withHandle />
-          
+
           {/* Main Chat Area */}
           <ResizablePanel defaultSize={50} minSize={30}>
             <div className="h-full flex flex-col">
@@ -164,7 +181,7 @@ export default function ChatPage() {
                 onShowCitations={handleShowCitations}
                 isLoading={isLoading}
               />
-              
+
               <ChatInput
                 onSendMessage={handleSendMessage}
                 isLoading={isLoading}
@@ -172,18 +189,21 @@ export default function ChatPage() {
               />
             </div>
           </ResizablePanel>
-          
+
           <ResizableHandle withHandle />
-          
+
           {/* Document Builder */}
           <ResizablePanel defaultSize={25} minSize={20} maxSize={40}>
             <DocumentBuilder onExportDocument={handleExportDocument} />
           </ResizablePanel>
         </ResizablePanelGroup>
-      </main>
-      
+      </div>
+
       {/* Citations Dialog */}
-      <Dialog open={!!showCitations} onOpenChange={() => setShowCitations(null)}>
+      <Dialog
+        open={!!showCitations}
+        onOpenChange={() => setShowCitations(null)}
+      >
         <DialogContent className="max-w-2xl">
           <DialogHeader>
             <DialogTitle className="flex items-center space-x-2">
@@ -191,13 +211,14 @@ export default function ChatPage() {
               <span>Citaciones Legales</span>
             </DialogTitle>
           </DialogHeader>
-          
+
           {showCitations && (
             <div className="space-y-3">
               <p className="text-sm text-muted-foreground">
-                Las siguientes fuentes legales bolivianas sustentan esta respuesta:
+                Las siguientes fuentes legales bolivianas sustentan esta
+                respuesta:
               </p>
-              
+
               <div className="space-y-2">
                 {showCitations.citations.map((citation, index) => (
                   <div key={index} className="p-3 bg-muted/30 rounded-lg">
@@ -212,9 +233,12 @@ export default function ChatPage() {
                   </div>
                 ))}
               </div>
-              
+
               <div className="flex justify-end space-x-2 pt-4">
-                <Button variant="outline" onClick={() => setShowCitations(null)}>
+                <Button
+                  variant="outline"
+                  onClick={() => setShowCitations(null)}
+                >
                   Cerrar
                 </Button>
                 <Button>
@@ -226,8 +250,6 @@ export default function ChatPage() {
           )}
         </DialogContent>
       </Dialog>
-      
-      <Footer />
-    </div>
+    </>
   );
 }

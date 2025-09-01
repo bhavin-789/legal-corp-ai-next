@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Bot, MessageSquare, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { useIntl } from "react-intl";
 
 interface GPTCardProps {
   id: string;
@@ -36,6 +37,7 @@ export function GPTCard({
   isPro = false,
   isPopular = false
 }: GPTCardProps) {
+  const intl = useIntl();
   return (
     <Card className="h-full border-border/50 hover:shadow-lg transition-all duration-300 group">
       <CardHeader className="pb-4">
@@ -102,7 +104,7 @@ export function GPTCard({
           >
             <Link href={`/chat/${id}`}>
               <MessageSquare className="h-4 w-4 mr-2" />
-              Chatear
+              {intl.formatMessage({ id: "catalog.gptsSection.chatButton" })}
               <ArrowRight className="h-4 w-4 ml-2" />
             </Link>
           </Button>

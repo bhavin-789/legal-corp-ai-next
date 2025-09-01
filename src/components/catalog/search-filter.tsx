@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Search, Filter, X } from "lucide-react";
+import { useIntl } from "react-intl";
 
 interface SearchFilterProps {
   onSearch: (query: string) => void;
@@ -21,6 +22,7 @@ export function SearchFilter({
 }: SearchFilterProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [showFilters, setShowFilters] = useState(false);
+  const intl = useIntl();
 
   const handleSearch = (value: string) => {
     setSearchQuery(value);
@@ -44,7 +46,7 @@ export function SearchFilter({
       <div className="relative">
         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
         <Input
-          placeholder="Buscar GPTs especializados..."
+          placeholder={intl.formatMessage({ id: "catalog.searchFilter.searchPlaceholder" })}
           value={searchQuery}
           onChange={(e) => handleSearch(e.target.value)}
           className="pl-10 pr-4"
