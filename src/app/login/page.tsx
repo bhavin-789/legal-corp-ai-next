@@ -1,0 +1,73 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
+import { AuthForm } from "@/components/auth/auth-form";
+import { authManager } from "@/lib/auth";
+import { useToast } from "@/hooks/use-toast";
+
+export default function LoginPage() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+  const router = useRouter();
+  const { toast } = useToast();
+
+  useEffect(() => {
+    // Check if user is already authenticated
+    const { isAuthenticated } = authManager.getState();
+    if (isAuthenticated) {
+      router.push("/catalog");
+    }
+  }, [router]);
+
+  const handleSubmit = async (formData: any) => {
+    setIsLoading(true);
+    setError("");
+
+    try {
+      const result = await authManager.login(formData.email, formData.password);
+      
+      if (result.success) {
+        toast({
+          title: "¡Bienvenido de vuelta!",
+          description: "Has iniciado sesión correctamente.",
+        });
+        
+        // Reset form
+        setError("");
+        
+        // Redirect to catalog
+        setTimeout(() => {
+          router.push("/catalog");
+        }, 500);
+      } else {
+        setError(result.error || "Error al iniciar sesión");
+      }
+    } catch (err) {
+      setError("Error de conexión. Por favor, intenta nuevamente.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <div className="min-h-screen flex flex-col">
+      <Header />
+      
+      <main className="flex-1 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-muted/20">
+        <div className="w-full max-w-md">
+          <AuthForm
+            type="login"
+            onSubmit={handleSubmit}
+            isLoading={isLoading}
+            error={error}
+          />
+        </div>
+      </main>
+      
+      <Footer />
+    </div>
+  );
+}
