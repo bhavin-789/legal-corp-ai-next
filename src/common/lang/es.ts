@@ -8,7 +8,8 @@ const es = {
     hero: {
       new20Tag: "Nuevo: 20 GPTs Especializados",
       title: "Asistente Legal con IA para Bolivia",
-      description: "Accede a 20 GPTs especializados en derecho boliviano. Chatea con expertos legales y genera documentos profesionales en minutos.",
+      description:
+        "Accede a 20 GPTs especializados en derecho boliviano. Chatea con expertos legales y genera documentos profesionales en minutos.",
       getStartedButton: "Comenzar",
       seePricesButton: "Ver Precios",
       safeConfidential: "Seguro y Confidencial",
@@ -18,308 +19,367 @@ const es = {
         chatTitle: "Asistente Legal",
         lawName: "Derecho Civil Boliviano",
         userPrompt: "Necesito redactar un contrato de arrendamiento para una propiedad en Santa Cruz.",
-        botAnswer: "Con gusto te ayudo. Con base en el Código Civil Boliviano, prepararé un contrato de arrendamiento para ti que incluya todas las cláusulas necesarias.",
-        generatedContract: "Contrato Generado"
+        botAnswer:
+          "Con gusto te ayudo. Basado en el Código Civil Boliviano, prepararé un contrato de arrendamiento que incluya todas las cláusulas necesarias.",
+        generatedContract: "Contrato Generado",
+      },
+    },
+    features: {
+      title: "Características Principales",
+      description: "Todo lo que necesitas para llevar tu práctica legal al siguiente nivel",
+      popular: "Popular",
+      new: "Nuevo",
+      feature1: {
+        title: "20 GPTs Especializados",
+        description: "Accede a expertos en derecho civil, penal, laboral, tributario y otras áreas del derecho boliviano."
+      },
+      feature2: {
+        title: "Generación de Documentos",
+        description: "Crea contratos, demandas, escrituras y otros documentos legales con formato profesional."
+      },
+      feature3: {
+        title: "Seguridad y Confidencialidad",
+        description: "Tus conversaciones y documentos están protegidos con encriptación de nivel empresarial."
+      },
+      feature4: {
+        title: "Respuestas Rápidas",
+        description: "Obtén respuestas legales precisas en segundos, no en horas o días."
+      },
+      feature5: {
+        title: "Diseñado para Profesionales",
+        description: "Herramienta optimizada para abogados, estudiantes y profesionales del derecho."
+      },
+      feature6: {
+        title: "Actualizado con Leyes Bolivianas",
+        description: "Base de conocimientos actualizada con la legislación y jurisprudencia boliviana más reciente."
+      },
+      whyChooseSection: {
+        title: "Por qué elegir Legal Corp AI",
+        description: "Nuestra plataforma está diseñada específicamente para el mercado boliviano, con conocimiento local actualizado y herramientas que se adaptan a tus necesidades.",
+        feature1: "Base de conocimientos especializada en derecho boliviano",
+        feature2: "Documentos en formato legal estándar boliviano",
+        feature3: "Soporte en español y servicio al cliente local",
       }
     },
+    testimonials: {
+      title: "Lo Que Dicen Nuestros Usuarios",
+      description: "Descubre cómo Legal Corp AI está transformando la práctica legal en Bolivia.",
+      testimonial1: {
+        name: "Dr. Carlos Mendoza",
+        role: "Abogado Penalista",
+        company: "Mendoza & Asociados",
+        content: "Legal Corp AI ha revolucionado mi práctica. Ahora puedo generar documentos y obtener asesoría legal en minutos, no en horas. La precisión en derecho boliviano es impresionante."
+      },
+      testimonial2: {
+        name: "Lic. Gabriela Rojas",
+        role: "Abogada Corporativa",
+        company: "Legal Solutions SRL",
+        content: "Como abogada corporativa, requiero rapidez y precisión. Esta plataforma me permite redactar contratos complejos con la confianza de que cumplen con la legislación boliviana vigente."
+      },
+      testimonial3: {
+        name: "Dr. Luis Fernández",
+        role: "Profesor Universitario",
+        company: "Universidad Mayor de San Andrés",
+        content: "Uso Legal Corp AI para preparar mis clases y ayudar a mis estudiantes. Es una herramienta educativa invaluable que mantiene actualizado el conocimiento legal."
+      },
+      testimonial4: {
+        name: "Lic. Ana Paula Vargas",
+        role: "Abogada Laboralista",
+        company: "Consultoría Legal Laboral",
+        content: "La especialización en derecho laboral boliviano es excelente. Me ha ahorrado incontables horas de investigación y me permite servir mejor a mis clientes."
+      },
+      activeLawyers: "Abogados Activos",
+      generatedDocuments: "Documentos Generados",
+      satisfaction: "Satisfacción",
+      supportAvailable: "Soporte Disponible"
+    },
+    pricing: {
+      title: "Planes para Cada Necesidad",
+      description: "Elige el plan perfecto para tu práctica legal. Mejora o cancela en cualquier momento.",
+      seeAllPlans: "Ver Todos los Planes",
+      doUNeedCustmizedPlan: "¿Necesitas un plan personalizado para tu empresa?",
+      contactSalesButton: "Contactar Ventas"
+    }
   },
-    header: {
-      navLinks: {
-        home: "Inicio",
-        catalog: "Catálogo",
-        prices: "Precios",
-        myAccount: "Mi Cuenta"
-      },
-      login: "Iniciar Sesión",
-      register: "Registrarse",
-      logOut: "Cerrar Sesión"
+  header: {
+    navLinks: {
+      home: "Inicio",
+      catalog: "Catálogo",
+      prices: "Precios",
+      myAccount: "Mi Cuenta",
     },
-
-
-
-
-      // canIHelp: "¿Puedo ayudarte con algo?",
-      // suggestion1: "Explica claramente mis derechos y responsabilidades legales básicos.",
-      // suggestion2: "¿Qué pasos iniciales debo tomar si surge un conflicto legal?",
-      // suggestion3: "Resume los desarrollos legales recientes más importantes.",
-      // mainDescription: "Haz cualquier pregunta legal: nuestros 20 modelos de IA entrenados en leyes responden rápidamente. Ayuda segura y basada en roles para usuarios, equipo de soporte y administradores.",
-      // viewPlans: "Ver planes",
-      // askAnytingPlaceholder: "Pregunta cualquier cosa",
-      // selectModel: "Seleccionar modelo",
-      // attachADocument: "Adjuntar un documento",
-      // recentChats: "Chats recientes",
-      // contractReviewTitle: "Revisión de contrato",
-      // contractReviewSnippet: "¿Puedes revisar este borrador de NDA?",
-      // startupIncorporationTitle: "Incorporación de empresa",
-      // startupIncorporationSnippet:
-      //   "¿Cuáles son los pasos para registrar una empresa?",
-      // trademarkQueryTitle: "Consulta de marca",
-      // trademarkQuerySnippet: "¿Cómo protejo el nombre de mi marca?",
-      // subscriptionDetails: "Detalles de suscripción",
-      // subscriptionDescription: "Tu plan actual e información de renovación.",
-      // plan: "plan",
-      // renewsOn: "Renueva el",
-      // status: "Estado",
-      // manageSubscription: "Gestionar suscripción",
+    login: "Iniciar Sesión",
+    register: "Registrarse",
+    logOut: "Cerrar Sesión",
+  },
+  footer: {
+    description: "Asistente legal con IA especializado en derecho boliviano. Accede a 20 GPTs especializados y genera documentos legales con confianza.",
+    safeAndConfidential: "Seguro y Confidencial",
+    allRightsReserved: "Todos los derechos reservados",
+    product: {
+      title: "Producto",
+      features: "Características",
+      GPTCatalog: "Catálogo de GPTs",
+      prices: "Precios",
+      documentation: "Documentación"
+    },
+    enterprise: {
+      title: "Empresa",
+      aboutUs: "Sobre Nosotros",
+      contact: "Contacto",
+      blog: "Blog",
+      racing: "Carrera"
+    },
+    legal: {
+      title: "Legal",
+      termsOfService: "Términos de Servicio",
+      privacyPolicy: "Política de Privacidad",
+      cookiePolicy: "Política de Cookies",
+      legalNotice: "Aviso Legal"
+    },
+    medium: {
+      title: "Recursos",
+      helpCenter: "Centro de Ayuda",
+      FAQ: "Preguntas Frecuentes",
+      technicalSupport: "Soporte Técnico",
+      systemStatus: "Estado del Sistema"
+    }
+  },
+  login: {
+    title: "Iniciar Sesión",
+    description: "Ingresa tus credenciales para acceder a tu cuenta",
+    footerText1: {
+      text: "¿No tienes una cuenta?",
+      linkName: "Regístrate"
+    },
+    footerText2: {
+      text: "¿Olvidaste tu contraseña?",
+      linkName: "Recupérala"
+    },
+  },
+  signup: {
+    title: "Crear Cuenta",
+    description: "Crea tu cuenta para empezar a usar Legal Corp AI",
+    footerText: {
+      text: "¿Ya tienes una cuenta?",
+      linkName: "Inicia Sesión"
+    },
+  },
+  forgot: {
+    title: "Recuperar Contraseña",
+    description: "Te enviaremos un enlace para recuperar tu contraseña.",
+    footerText: {
+      text: "¿Olvidaste tu contraseña?",
+      linkName: "Inicia Sesión"
+    },
+  },
+  authForm: {
+    fullName: {
+      label: "Nombre Completo",
+      placeholder: "Juan Pérez",
+      name2CHarLongError: "El nombre debe tener al menos 2 caracteres",
+    },
+    email: {
+      label: "Correo Electrónico",
+      placeholder: "correo@ejemplo.com",
+      invalidEmailFormatError: "Formato de correo inválido"
+    },
+    password: {
+      label: "Contraseña",
+      placeholder: "",
+      pwdMustbe8LongError: "La contraseña debe tener al menos 8 caracteres",
+      atLeast1UpperCaseLaterError: "Debe contener al menos una mayúscula",
+      atLeast1LowerCaseLaterError: "Debe contener al menos una minúscula",
+      atLeast1NumberError: "Debe contener al menos un número",
+      passwordMustContainWarn: "La contraseña debe contener",
+      min8CharWarn: "Mínimo 8 caracteres",
+      atLeast1UpperCaseLaterWarn: "Al menos una mayúscula",
+      atLeast1LowerCaseLaterWarn: "Al menos una minúscula",
+      atLeast1NumberWarn: "Al menos un número",
+    },
+    confirmPassword: {
+      title: "Confirmar Contraseña",
+      placeholder: "",
+      passowrdDoNotMatchError: "Las contraseñas no coinciden"
+    }
+  },
+  catalog: {
+    hero: {
+      title: "Catálogo de GPTs Especializados",
+      description: "Accede a {count} asistentes legales especializados en derecho boliviano.",
+      yourCurrentPlan: "Tu plan actual",
+      freePlanName: "Gratis",
+      proPlanName: "Pro",
+      upgradeToPro: "Mejorar a Pro",
+    },
+    searchFilter: {
+      searchPlaceholder: "Buscar GPTs especializados...",
+      filters: "Filtros"
+    },
+    gptsSection: {
+      title: "{count, plural, one {# Asistente Legal} other {# Asistentes Legales}}",
+      chatButton: "Chatear"
+    },
+    unlockSuggestionSection: {
+      title: "Desbloquea todos los GPTs especializados",
+      description: "Mejora al plan Pro para acceder a los 20 GPTs especializados y disfruta de funciones avanzadas como exportación de documentos y soporte prioritario.",
+      seePlans: "Ver Planes"
+    }
+  },
+  pricing: {
+    hero: {
+      title: "Planes para Cada Necesidad Legal",
+      description: "Elige el plan perfecto para tu práctica legal. Desde profesionales independientes hasta estudios jurídicos completos."
+    },
+    comparison: {
+      title: "Comparación Detallada",
+      description: "Encuentra el plan perfecto comparando todas las características",
+      comparisonTable: {
+        title: "Comparación de Funciones",
+        featureTHead: "Característica"
+      }
+    },
+    faq: {
+      title: "Preguntas Frecuentes",
+      description: "Todo lo que necesitas saber sobre nuestros planes"
+    },
+    readyToTransformSection: {
+      title: "¿Listo para Transformar Tu Práctica Legal?",
+      description: "Únete a cientos de abogados en Bolivia que ya están usando Legal Corp AI para mejorar su productividad y servir mejor a sus clientes.",
+      getStartedButton: "Comenzar",
+      contactSalesButton: "Contactar Ventas"
+    }
+  },
+  account: {
+    mainTitle: {
+      title: "Mi Cuenta",
+      description: "Administra tu perfil, suscripción y preferencias",
+    },
     sidebar: {
-      upgradeToPro: "Actualizar a Pro",
-      account: "Cuenta",
-      dashboard: "Panel",
-      billingHistory: "Historial de facturación",
-      notifications: "Notificaciones",
-      logOut: "Cerrar sesión",
-      chats: "Conversaciones",
-      options: "Opciones",
-      themeMode: {
-        title: "Modo de tema",
-        light: "Claro",
-        dark: "Oscuro",
-        system: "Sistema",
+      buttons: {
+        profile: "Perfil",
+        security: "Seguridad",
+        notifications: "Notificaciones",
+        billing: "Facturación",
+        logOut: "Cerrar Sesión"
       },
-      language: {
-        title: "Idioma",
-        english: "Inglés",
-        spanish: "Español",
-        toggleLanguage: "Cambiar idioma",
-        toggleTheme: "Cambiar tema",
+      profile: {
+        saveChangesButton: "Guardar Cambios",
+        saving: "Guardando...",
+        personalInformation: {
+          title: "Información Personal",
+          description: "Actualiza tu información personal y preferencias de cuenta"
+        },
+        basicInformation: {
+          title: "Información Básica",
+          fullName: {
+            label: "Nombre Completo",
+            placeholder: "Juan Pérez",
+          },
+          email: {
+            label: "Correo Electrónico",
+            placeholder: "correo@ejemplo.com",
+          },
+          telephone: {
+            label: "Teléfono",
+            placeholder: "+591 70000000",
+          },
+          language: {
+            label: "Idioma",
+            placeholder: "Español",
+          }
+        },
+        addressInformation: {
+          title: "Información de Dirección",
+          address: {
+            label: "Dirección",
+            placeholder: "Av. Principal #123"  
+          },
+          city: {
+            label: "Ciudad",
+            placeholder: "La Paz"  
+          },
+          country: {
+            label: "País",
+            placeholder: "Bolivia"  
+          },
+        },
+        notificationPreferences: {
+          title: "Preferencias de Notificaciones",
+          description: "Configura cómo deseas recibir notificaciones de nuestra plataforma",
+          emailNotification: {
+            title: "Notificaciones por Correo",
+            description: "Recibe notificaciones importantes sobre tu cuenta",
+          },
+          smsNotification: {
+            title: "Notificaciones por SMS",
+            description: "Recibe alertas importantes por mensaje de texto"
+          },
+          marketingEmails: {
+            title: "Emails de Marketing",
+            description: "Recibe actualizaciones sobre nuevas funciones y promociones"
+          }
+        }
       },
-      newChat: "Nuevo chat",
-      searchChats: "Buscar chats",
-      documents: "Documentos",
-      draftedDocument: "Documentos redactados",
-      searchYourChatsPlaceholder: "Busca en tus chats...",
-      chatAction: {
-        more: "Más",
-        viewChat: "Ver chat",
-        shareChat: "Compartir chat",
-        renameChat: "Renombrar chat",
-        deleteChat: "Eliminar chat",
+      notifications: {
+        title: "Preferencias de Notificaciones",
+        description: "Configura cómo y cuándo recibir notificaciones",
+        emailNotifications: {
+          title: "Notificaciones por Correo",
+          accountUpdates: {
+            title: "Actualizaciones de Cuenta",
+            description: "Cambios importantes en tu cuenta"
+          },
+          invoicesAndPayments: {
+            title: "Facturas y Pagos",
+            description: "Notificaciones sobre facturas y pagos"
+          },
+          productUpdates: {
+            title: "Actualizaciones del Producto",
+            description: "Nuevas funciones y mejoras"
+          }
+        },
+        pushNotifications: {
+          chatMessages: {
+            title: "Mensajes de Chat",
+            description: "Notificaciones sobre nuevas respuestas"
+          },
+          generatedDocuments: {
+            title: "Documentos Generados",
+            description: "Cuando tus documentos estén listos"
+          }
+        }
       },
+      billing: {
+        title: "Información de Facturación",
+        planActual: "Plan Actual",
+        updatePlan: "Actualizar Plan",
+        nextPayment: "Próximo Pago",
+        subscribe: "Suscribirse",
+        unsubscribe: "Cancelar Suscripción",
+        paymentMethod: "Método de Pago",
+        expires: "Vence",
+        update: "Actualizar"
+      }
+    }
+  },
+  chat: {
+    sidebar: {
+      conversations: "Conversaciones",
+      searchPlaceholder: "Buscar conversaciones...",
+      noContent: {
+        title: "No hay conversaciones",
+        description: "Inicia una nueva conversación"
+      }
     },
-    landingPage: {
-      dashboard: "Panel",
-      login: "Iniciar sesión",
-      hero: {
-        title: "Asistencia Legal Potenciada por IA",
-        description:
-          "Obtén asesoramiento legal instantáneo y redacción de documentos con nuestro bot entrenado con GPT y abogados expertos.",
-        goToDashboard: "Ir al panel",
-        getStarted: "Comenzar",
-        signIn: "Iniciar sesión",
-      },
-      why: {
-        title: "¿Por qué elegir LegalCorp AI?",
-        instantAnswers: {
-          title: "Respuestas instantáneas",
-          description:
-            "Recibe respuestas legales en segundos por nuestro bot de IA.",
-        },
-        confidentialAndSecure: {
-          title: "Confidencial y seguro",
-          description:
-            "Tus datos están protegidos con seguridad de nivel empresarial.",
-        },
-        expertLawyers: {
-          title: "Abogados expertos",
-          description:
-            "Conéctate con abogados certificados para casos complejos.",
-        },
-      },
-      howItWorks: {
-        title: "Cómo funciona",
-        askQuestions: {
-          title: "Haz tu pregunta legal",
-          description:
-            "Escribe tu consulta y obtén respuestas instantáneas con IA.",
-        },
-        reviewDocuments: {
-          title: "Revisar documentos legales",
-          description: "Carga y revisa contratos, acuerdos y más.",
-        },
-        connectLawyers: {
-          title: "Conectarse con abogados",
-          description: "Obtén ayuda experta para asuntos legales complejos.",
-        },
-      },
-      practiceAreas: {
-        title: "Áreas de práctica",
-        corporateLaw: {
-          title: "Derecho corporativo",
-          description:
-            "Formación empresarial, contratos, fusiones y adquisiciones.",
-        },
-        intellectualProperty: {
-          title: "Propiedad intelectual",
-          description:
-            "Patentes, marcas registradas, derechos de autor y protección IP.",
-        },
-        employmentLaw: {
-          title: "Derecho laboral",
-          description: "Derechos laborales, políticas y resolución de disputas.",
-        },
-      },
-      whatOurClientsSay: {
-        title: "Lo que dicen nuestros clientes",
-        card1: {
-          description:
-            "“LegalCorp AI me ayudó a redactar mi contrato comercial en minutos. ¡Altamente recomendado!”",
-          writer: "— Fundador de startup",
-        },
-        card2: {
-          description:
-            "“El bot de IA respondió mis preguntas legales al instante y me conectó con un abogado.”",
-          writer: "— Propietario de pequeña empresa",
-        },
-      },
-      readyToGetStarted: {
-        title: "¿Listo para comenzar?",
-        description: "Únete a miles de usuarios que ya usan LegalCorp AI.",
-        startYourJourney: "Comienza tu camino",
-      },
-    },
-    auth: {
-      register: {
-        title: "Crear cuenta",
-        subtitle: "Ingresa tus datos para crear tu cuenta",
-        submit: "Registrarse",
-        footerText: "¿Ya tienes una cuenta? Inicia sesión",
-      },
-      login: {
-        title: "Bienvenido de nuevo",
-        subtitle: "Ingresa tus credenciales para acceder a tu cuenta",
-        submit: "Iniciar sesión",
-        footerText: "¿No tienes una cuenta? Regístrate",
-      },
-      forgotPassword: {
-        emailSent:
-          "¡Correo de restablecimiento de contraseña enviado! Por favor revisa tu bandeja de entrada.",
-        title: "Olvidé mi contraseña",
-        subtitle:
-          "Ingresa tu correo electrónico para recibir un enlace de restablecimiento de contraseña.",
-        pleaseWait: "Por favor espera...",
-        submit: "Enviar enlace de restablecimiento",
-        backToLogin: "Volver al inicio de sesión",
-      },
-  
-      resetPassword: {
-        success: "¡La contraseña ha sido restablecida con éxito!",
-        title: "Restablecer contraseña",
-        subtitle: "Ingresa tu nueva contraseña a continuación.",
-        confirmPassword: "Confirmar contraseña",
-        submit: "Restablecer contraseña",
-        backToLogin: "Volver al inicio de sesión",
-      },
-  
-      common: {
-        google: "Google",
-        orContinueWith: "O continuar con",
-        email: "Correo electrónico",
-        password: "Contraseña",
-        firstName: "Nombre",
-        lastName: "Apellido",
-        pleaseWait: "Por favor espera...",
-      },
-    },
-    toast: {
-      logout: "Sesión cerrada con éxito",
-      accountCreatedCheckEmail:
-        "¡Cuenta creada con éxito! Revisa tu correo para confirmar tu cuenta.",
-      accountCreated:
-        "¡Cuenta creada con éxito!",
-      loggedIn: "¡Sesión iniciada con éxito!",
-      success: "Éxito",
-      error: "Error",
-      suggestion: "Sugerencia",
-      unexpectedError: "¡Ocurrió un error inesperado!",
-      cantUploadMoreThan1File: "No se puede subir más de 1 archivo a la vez",
-      cantUploadMoreThanDecidedFile:
-        "No se pueden subir más de {maxFileCount} archivos",
-      fileWasRejected: "El archivo {fileName} fue rechazado",
-      uploadFile: {
-        loading: "Subiendo {target}...",
-        uploaded: "{target} subido",
-        failedToUpload: "Error al subir {target}",
-      },
-      pleaseUpgradePlan: "¡Mejora el plan para desbloquear más funciones!",
-    },
-    subscription: {
-      title: "Planes de Suscripción",
-      back: "Atrás",
-      choose: "Elegir",
-      processing: "Procesando...",
-      faqs: "Preguntas Frecuentes",
-    },
-    promptAreaOfChatPage: {
-      askAnytingPlaceholder: "Pregunta lo que sea",
-      addFromApps: "Agregar desde aplicaciones",
-      app1: "Aplicación 1",
-      app2: "Aplicación 2",
-      addPhotosAndFiles: "Agregar fotos y archivos",
-    },
-    chatScreen: {
-      header: {
-        share: "Compartir",
-      },
-      welcomeTo: "Bienvenido a ",
-      gptSelectionError: "Error al guardar la selección de GPT: ",
-    },
-    suspense: {
-      loading: "Cargando...",
-    },
-    modelChoose: {
-      title: "Elige tus modelos legales",
-      msgForPremiumUser:
-        "Como miembro Premium, tienes acceso a todos los modelos GPT.",
-      msgForNonPremiumUser:
-        "Puedes seleccionar hasta {maxSelections} modelos según tu plan {plan_id}.",
-      selected: "seleccionado",
-      SaveAndContinue: "Guardar y continuar",
-    },
-    chatFeed: {
-      tagTitleMessage: {
-        copied: "Copiado",
-        copyMessage: "Copiar mensaje",
-      },
-      draftedDocument: {
-        pending: {
-          title: "Revisión pendiente",
-          description:
-            "Tu documento está actualmente en revisión. Por favor espera un momento hasta que el personal de soporte lo revise y lo verifique.",
-        },
-        successfull: {
-          title: "Documento generado",
-          description: "Tu documento se ha generado con éxito.",
-          clickToView: "haz clic para ver",
-        },
-        rejected: {
-          title: "Documento Rechazado",
-          description: "Tu documento ha sido rechazado.",
-        },
-      },
-    },
-    dropdown: {
-      selectAModel: "Selecciona un modelo",
-    },
-    draftedDocument: {
-      mainTitle: "Documentos redactados",
-      document: "Documento",
-      created: "Creado",
-      viewDocument: "Ver Documento",
-      pending: "Pendiente",
-      approved: "Aprobado",
-      rejected: "Rechazado",
-      queued: "En cola",
-      clickToRead: "Haz clic para leer el mensaje completo",
-      fullPrompt: "Mensaje completo",
-      reviewed: "Revisado",
-      drafting: "Redactando",
-      complete: "Completado",
-      error: "Error",
-    },
-    rightSideDrawer: {
-      legalCorpsComputer: "La computadora de Legal Corp",
-    },
-  };
+    conversationBox: {
+      conversation: "Conversación",
+      startaConversation: "Inicia una conversación",
+      sendAMessageToStart: "Envía un mensaje para comenzar a chatear con el asistente legal"
+    }
+  },
+};
+
   
   export default es;
   

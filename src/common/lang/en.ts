@@ -3,8 +3,6 @@
 //     "welcomeMessage": "Welcome"
 // }
 
-import { Description } from "@radix-ui/react-toast";
-import { describe } from "node:test";
 
 const en = {
   home: {
@@ -179,12 +177,12 @@ const en = {
   authForm: {
     fullName: {
       label: "Full Name",
-      placeholder: "john doe", //for spanish :- Juan Pérez
+      placeholder: "john doe",
       name2CHarLongError: "Name must be at least 2 characters long",
     },
     email: {
       label: "Email",
-      placeholder: "john@example.com", // for spanish :- correo@ejemplo.com
+      placeholder: "john@example.com",
       invalidEmailFormatError: "Invalid email format"
     },
     password: {
@@ -220,7 +218,7 @@ const en = {
       filters: "Filters"
     },
     gptsSection: {
-      title: "{count, plural, one {# Legal Assistant} other {# Legal Assistants}}", // for spanish :- "{count, plural, one {# Asistente Legal} other {# Asistentes Legales}}"
+      title: "{count, plural, one {# Legal Assistant} other {# Legal Assistants}}",
       chatButton: "Chat"
     },
     unlockSuggestionSection: {
@@ -277,19 +275,19 @@ const en = {
           title: "Basic Information",
           fullName: {
             label: "Full Name",
-            placeholder: "John Doe", // for spanish:- Juan Pérez
+            placeholder: "John Doe",
           },
           email: {
             label: "Email",
-            placeholder: "john@example.com", // for spanish:- correo@ejemplo.com
+            placeholder: "john@example.com",
           },
           telephone: {
             label: "Telephone",
-            placeholder: "+591 70000000", // for spanish:- correo@ejemplo.com
+            placeholder: "+591 70000000",
           },
           language: {
             label: "Language",
-            placeholder: "john@example.com", // for spanish:- correo@ejemplo.com
+            placeholder: "spanish",
           }
         },
         addressInformation: {
@@ -380,299 +378,6 @@ const en = {
       startaConversation: "Start a conversation",
       sendAMessageToStart: "Send a message to start chatting with the paralegal"
     }
-  },
-
-
-
-
-
-
-  // canIHelp: "Can I help you with anything?",
-  // suggestion1: "Explain my basic legal rights and responsibilities clearly.",
-  // suggestion2: "What initial steps should I take if a legal dispute arises?",
-  // suggestion3: "Summarize important recent legal developments.",
-  // mainDescription: "Ask any legal question—our 20 law-trained AI models reply quickly. Secure, role-based help for users,support and admin.",
-  // viewPlans: "View Plans",
-  // askAnytingPlaceholder: "Ask anything",
-  // selectModel: "Select model",
-  // attachADocument: "Attach a document",
-  // recentChats: "Recent Chats",
-  // contractReviewTitle: "Contract Review",
-  // contractReviewSnippet: "Can you check this NDA draft?",
-  // startupIncorporationTitle: "Startup Incorporation",
-  // startupIncorporationSnippet: "What are the steps to register a company?",
-  // trademarkQueryTitle: "Trademark Query",
-  // trademarkQuerySnippet: "How do I protect my brand name?",
-  // subscriptionDetails: "Subscription Details",
-  // subscriptionDescription: "Your current plan and renewal info.",
-  // plan: "Plan",
-  // renewsOn: "Renews on",
-  // status: "Status",
-  // manageSubscription: "Manage subscription",
-  sidebar: {
-    upgradeToPro: "Upgrade to Pro",
-    account: "Account",
-    billingHistory: "Billing history",
-    dashboard: "Dashboard",
-    notifications: "Notifications",
-    logOut: "Log out",
-    chats: "Chats",
-    options: "Options",
-    themeMode: {
-      title: "Theme Mode",
-      light: "Light",
-      dark: "Dark",
-      system: "System",
-    },
-    language: {
-      title: "Language",
-      english: "English",
-      spanish: "Spanish",
-      toggleLanguage: "Toggle language",
-      toggleTheme: "Toggle theme",
-    },
-    newChat: "New chat",
-    searchChats: "Search chats",
-    documents: "Documents",
-    searchYourChatsPlaceholder: "Search your chats...",
-    chatAction: {
-      more: "More",
-      viewChat: "View Chat",
-      shareChat: "Share Chat",
-      renameChat: "Rename Chat",
-      deleteChat: "Delete Chat",
-    },
-  },
-  landingPage: {
-    dashboard: "Dashboard",
-    login: "Login",
-    hero: {
-      title: "AI-Powered Legal Assistance",
-      description:
-        "Get instant legal advice and document drafting from our GPT-trained bot and expert lawyers.",
-      goToDashboard: "Go to Dashboard",
-      getStarted: "Get Started",
-      signIn: "Sign In",
-    },
-    sidebar: {
-      upgradeToPro: "Upgrade to Pro",
-      account: "Account",
-      billing: "Billing",
-      notifications: "Notifications",
-      logOut: "Log out",
-      history: "History",
-      options: "Options",
-      enterprisePlan: "Enterprise",
-      newChat: "New chat",
-      searchChats: "Search chats",
-      draftedDocument: "Drafted Document",
-      searchYourChatsPlaceholder: "Search your chats...",
-    },
-    why: {
-      title: "Why Choose LegalCorp AI?",
-      instantAnswers: {
-        title: "Instant Answers",
-        description: "Get legal questions answered in seconds by our AI bot.",
-      },
-      confidentialAndSecure: {
-        title: "Confidential & Secure",
-        description: "Your data is protected with enterprise-grade security.",
-      },
-      expertLawyers: {
-        title: "Expert Lawyers",
-        description: "Connect with certified lawyers for complex cases.",
-      },
-    },
-    howItWorks: {
-      title: "How It Works",
-      askQuestions: {
-        title: "Ask Your Legal Question",
-        description: "Type your query and get instant AI-powered answers.",
-      },
-      reviewDocuments: {
-        title: "Review Legal Documents",
-        description: "Upload and review contracts, agreements, and more.",
-      },
-      connectLawyers: {
-        title: "Connect with Lawyers",
-        description: "Get expert help for complex legal matters.",
-      },
-    },
-    practiceAreas: {
-      title: "Practice Areas",
-      corporateLaw: {
-        title: "Corporate Law",
-        description: "Business formation, contracts, mergers & acquisitions.",
-      },
-      intellectualProperty: {
-        title: "Intellectual Property",
-        description: "Patents, trademarks, copyrights, and IP protection.",
-      },
-      employmentLaw: {
-        title: "Employment Law",
-        description: "Workplace rights, policies, and dispute resolution.",
-      },
-    },
-    whatOurClientsSay: {
-      title: "What Our Clients Say",
-      card1: {
-        description:
-          "“LegalCorp AI helped me draft my business contract in minutes. Highly recommended!”",
-        writer: "— Startup Founder",
-      },
-      card2: {
-        description:
-          "“The AI bot answered my legal questions instantly and connected me to a lawyer for further help.”",
-        writer: "— Small Business Owner",
-      },
-    },
-    readyToGetStarted: {
-      title: "Ready to Get Started?",
-      description:
-        "Join thousands of users who are already using LegalCorp AI.",
-      startYourJourney: "Start Your Journey",
-    },
-  },
-  auth: {
-    register: {
-      title: "Create account",
-      subtitle: "Enter your details to create your account",
-      submit: "Sign Up",
-      footerText: "Already have an account? Sign in",
-    },
-    login: {
-      title: "Welcome back",
-      subtitle: "Enter your credentials to access your account",
-      submit: "Sign In",
-      footerText: "Don't have an account? Sign up",
-    },
-    forgotPassword: {
-      emailSent: "Password reset email sent! Please check your inbox.",
-      title: "Forgot Password",
-      subtitle: "Enter your email to receive a password reset link.",
-      pleaseWait: "Please wait...",
-      submit: "Send Reset Link",
-      backToLogin: "Back to Login",
-    },
-    resetPassword: {
-      success: "Password has been reset successfully!",
-      title: "Reset Password",
-      subtitle: "Enter your new password below.",
-      confirmPassword: "Confirm Password",
-      submit: "Reset Password",
-      backToLogin: "Back to Login",
-    },
-    common: {
-      google: "Google",
-      orContinueWith: "Or continue with",
-      email: "Email",
-      password: "Password",
-      firstName: "First Name",
-      lastName: "Last Name",
-      pleaseWait: "Please wait...",
-    },
-  },
-  toast: {
-    logout: "Logout successfully",
-    accountCreatedCheckEmail:
-      "Account created successfully! Please check your email to confirm your account.",
-    accountCreated: "Account created successfully!",
-    loggedIn: "Logged in successfully!",
-    success: "Success",
-    error: "Error",
-    suggestion: "Suggestion",
-    unexpectedError: "An unexpected error occurred!",
-    cantUploadMoreThan1File: "Cannot upload more than 1 file at a time",
-    cantUploadMoreThanDecidedFile:
-      "Cannot upload more than {maxFileCount} files",
-    fileWasRejected: "File {fileName} was rejected",
-    uploadFile: {
-      loading: "Uploading {target}...",
-      uploaded: "{target} uploaded",
-      failedToUpload: "Failed to upload {target}",
-    },
-    pleaseUpgradePlan: "Upgrade the plan to unlock more features!",
-  },
-  subscription: {
-    title: "Subscription Plans",
-    back: "Back",
-    choose: "Choose",
-    processing: "Processing...",
-    faqs: "Frequently Asked Questions",
-  },
-  promptAreaOfChatPage: {
-    askAnytingPlaceholder: "Ask anything",
-    addFromApps: "Add from apps",
-    app1: "App 1",
-    app2: "App 2",
-    addPhotosAndFiles: "Add photos & files",
-  },
-  chatScreen: {
-    header: {
-      share: "Share",
-    },
-    welcomeTo: "Welcome to ",
-    gptSelectionError: "Error saving GPT selection: ",
-  },
-  suspense: {
-    loading: "Loading...",
-  },
-  modelChoose: {
-    title: "Choose Your Law Models",
-    msgForPremiumUser:
-      "As a Premium member, you have access to all GPT models.",
-    msgForNonPremiumUser:
-      "You can select up to {maxSelections} models based on your {plan_id} plan.",
-    selected: "selected",
-    SaveAndContinue: "Save & Continue",
-  },
-  chatFeed: {
-    tagTitleMessage: {
-      copied: "Copied",
-      copyMessage: "Copy message",
-    },
-    draftedDocument: {
-      pending: {
-        title: "Review pending",
-        description:
-          "Your document is currently under review. Please wait a while till support person reviews and verified it.",
-      },
-      successfull: {
-        title: "Document Generated",
-        description: "Your document has been successfully generated.",
-        clickToView: "click to view",
-      },
-      rejected: {
-        title: "Document Rejected",
-        description: "Your document has been rejected.",
-      },
-      queued: {
-        title: "Document Queued",
-        description: "Your document has been queued.",
-      },
-    },
-  },
-  dropdown: {
-    selectAModel: "Select a model",
-  },
-  draftedDocument: {
-    mainTitle: "Drafted Documents",
-    document: "Document",
-    created: "Created",
-    viewDocument: "View Document",
-    pending: "Pending",
-    approved: "Approved",
-    rejected: "Rejected",
-    queued: "Queued",
-    clickToRead: "Click to read a full prompt",
-    fullPrompt: "Full Prompt",
-    reviewed: "Reviewed",
-    drafting: "Drafting",
-    complete: "Complete",
-    error: "Error",
-  },
-  rightSideDrawer: {
-    legalCorpsComputer: "Legal corp's Computer",
   },
 };
 
